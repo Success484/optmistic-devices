@@ -28,12 +28,12 @@
       <div id="all" data-tab-content class="active">
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {% for product in products %}
-          {% if product.image %}
+          {% if product.image_url %}
           <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
             <div class="image-holder">
               <a href="{% url 'detailPageView' product_id=product.id %}">
               <img
-                src="{{ product.image.url }}"
+                src="{{ product.image_url }}"
                 alt="{{ product.name }}"
                 class="product-image w-full rounded-md object-contain"
               />
