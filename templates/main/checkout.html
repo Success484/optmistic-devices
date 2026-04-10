@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="font-family: 'Poppins', sans-serif; margin: 0; background-color: #f8f9fc; color: #333;">
+
+  <!-- Checkout Container -->
+  <div style="max-width: 1200px; margin: 50px auto; display: flex; flex-wrap: wrap; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+
+    <!-- Checkout Form -->
+    <div style="flex: 2; min-width: 350px; padding: 40px;">
+      <h2 style="font-size: 28px; margin-bottom: 25px; color: #222;">Checkout</h2>
+
+      <!-- Contact Info -->
+      <h3 style="font-size: 20px; margin-bottom: 10px;">Contact Information</h3>
+      <input type="text" placeholder="Full Name" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+      <input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+      <input type="tel" placeholder="Phone Number" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 30px;">
+
+      <!-- Shipping Info -->
+      <h3 style="font-size: 20px; margin-bottom: 10px;">Shipping Address</h3>
+      <input type="text" placeholder="Street Address" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+      <input type="text" placeholder="City" style="width: 48%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px; margin-right: 4%;">
+      <input type="text" placeholder="State / Province" style="width: 48%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+      <input type="text" placeholder="Postal Code" style="width: 48%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 30px; margin-right: 4%;">
+      <input type="text" placeholder="Country" style="width: 48%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 30px;">
+
+      <!-- Payment Method -->
+      <h3 style="font-size: 20px; margin-bottom: 10px;">Payment Method</h3>
+      <div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+        <label style="display: flex; align-items: center; margin-bottom: 15px;">
+          <input type="radio" name="payment" checked style="margin-right: 10px;">
+          Credit / Debit Card
+        </label>
+        <input type="text" placeholder="Card Number" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+        <div style="display: flex; gap: 10px;">
+          <input type="text" placeholder="MM/YY" style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
+          <input type="text" placeholder="CVV" style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
+        </div>
+      </div>
+
+      <button style="background-color: #4A90E2; color: white; border: none; width: 100%; padding: 16px; font-size: 18px; border-radius: 6px; cursor: pointer; transition: background 0.3s;">
+        Place Order
+      </button>
+    </div>
+
+    <!-- Order Summary -->
+    <div style="flex: 1; min-width: 300px; background-color: #f2f4f7; padding: 40px;">
+      <h3 style="font-size: 22px; margin-bottom: 20px;">Order Summary</h3>
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span>Wireless Headphones</span>
+        <span>$249.99</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span>USB-C Charger</span>
+        <span>$29.99</span>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span>Subtotal</span>
+        <span>$279.98</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span>Shipping</span>
+        <span>$10.00</span>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+
+      <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px;">
+        <span>Total</span>
+        <span>$289.98</span>
+      </div>
+
+      <div style="margin-top: 30px; text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" width="60" style="margin: 0 5px;">
+        <img src="https://www.shutterstock.com/image-vector/vinnytsia-ukraine-september-04-2023-600nw-2357100277.jpg" width="60px" height="60px" alt="Mastercard" width="60" style="margin: 0 5px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" width="70" style="margin: 0 5px;">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Smooth Hover -->
+  <script>
+    const button = document.querySelector('button');
+    button.addEventListener('mouseover', () => button.style.backgroundColor = '#357ABD');
+    button.addEventListener('mouseout', () => button.style.backgroundColor = '#4A90E2');
+  </script>
+
+</div>
+{% endblock content %}

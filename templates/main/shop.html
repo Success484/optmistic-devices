@@ -1,0 +1,82 @@
+{%extends 'base.html'%} {%load static%} {%block content%}
+
+<form method="GET" action="{% url 'ShopPageView' %}">
+  <div class="search-component" style="margin-top: 80px; margin-bottom: -80px; height: 80px;">
+    <div class="input-box">
+      <i class="uil uil-search"></i>
+      <input type="text" name="q" placeholder="Search here..." />
+      <button type="submit" class="button">Search</button>
+    </div>
+  </div>
+</form>
+
+<section
+  id="selling-products"
+  class="product-store bg-light-grey padding-large"
+>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Best selling products</h2>
+    </div>
+    <ul class="tabs list-unstyled">
+      <li data-tab-target="#all" class="active tab">All</li>
+      <li data-tab-target="#phones" class="tab">Phones</li>
+      <li data-tab-target="#laptops" class="tab">Laptops</li>
+      <li data-tab-target="#accessories" class="tab">Accessories</li>
+    </ul>
+    <div class="tab-content">
+      <div id="all" data-tab-content class="active">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {% for product in products %}
+          {% if product.image %}
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <a href="{% url 'detailPageView' product_id=product.id %}">
+              <img
+                src="{{ product.image.url }}"
+                alt="{{ product.name }}"
+                class="product-image w-full rounded-md object-contain"
+              />
+              </a>
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="{% url 'detailPageView' product_id=product.id %}">{{ product.name }}</a>
+              </h3>
+              <div class="item-price text-primary">₦{{ product.price|floatformat:2 }}</div>
+            </div>
+          </div>
+          {% endif %}
+          {% empty %}
+          <p>No products found.</p>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+  <div class="custom-pagination">
+	<nav>
+		<ul class="custom-pagination-list">
+			<li class="custom-pagination-item">
+				<a href="#">Previous</a>
+			</li>
+			<li class="custom-pagination-item custom-pg-active">
+				<a href="#">1</a>
+			</li>
+			<li class="custom-pagination-item">
+				<a href="#">2</a>
+			</li>
+			<li class="custom-pagination-item">
+				<a href="#">3</a>
+			</li>
+			<li class="custom-pagination-item">
+				<a href="#">4</a>
+			</li>
+			<li class="custom-pagination-item">
+				<a href="#">Next</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+</section>
+{%endblock content%}

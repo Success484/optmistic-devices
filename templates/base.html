@@ -1,0 +1,309 @@
+{% load static%}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/normalize.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'icomoon/icomoon.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/vendor.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="nav2">
+        <div class="nav2-logo">
+          <h1 style="font-weight: 500">Optmistic Devices</h1>
+        </div>
+
+        <ul class="nav2-links">
+          <li>
+            <a href="{% url 'HomePageView' %}" style="color: black">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'ShopPageView' %}" style="color: black">Shop</a>
+          </li>
+          <li>
+            <a href="{% url 'contactPageView' %}" style="color: black"
+              >Contact</a
+            >
+          </li>
+          <li style="position: relative">
+            <a href="{% url 'wishlistPageView' %}">
+              <i class="icon icon-heart" style="color: black"></i>
+              <span
+                id="wishlist-count-nav"
+                style="
+                  position: absolute;
+                  top: -5px;
+                  right: -8px;
+                  background: #ff4d4d;
+                  color: #fff;
+                  font-size: 10px;
+                  font-weight: bold;
+                  width: 18px;
+                  height: 18px;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+                >{{ wishlist_count }}</span
+              >
+            </a>
+          </li>
+          <li style="position: relative">
+            <a href="{% url 'CartPageView' %}">
+              <i class="icon icon-shopping-cart" style="color: black"></i>
+              <span
+                id="cart-count-nav"
+                style="
+                  position: absolute;
+                  top: -5px;
+                  right: -8px;
+                  background: #ff4d4d;
+                  color: #fff;
+                  font-size: 10px;
+                  font-weight: bold;
+                  width: 18px;
+                  height: 18px;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+                >{{ cart_count }}</span
+              >
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav2-hamburger">
+          <span class="nav2-line"></span>
+          <span class="nav2-line"></span>
+          <span class="nav2-line"></span>
+        </div>
+      </nav>
+
+      <div class="nav2-menubar">
+        <ul>
+          <li>
+            <a href="{% url 'HomePageView' %}" style="color: black">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'ShopPageView' %}" style="color: black">Shop</a>
+          </li>
+          <li>
+            <a href="{% url 'contactPageView' %}" style="color: black"
+              >Contact</a
+            >
+          </li>
+          <li style="position: relative">
+            <a href="{% url 'wishlistPageView' %}">
+              Wishlist
+              <i class="icon icon-heart" style="color: black"></i>
+              <span
+                id="wishlist-count-nav"
+                style="
+                  position: absolute;
+                  top: -5px;
+                  right: -8px;
+                  background: #ff4d4d;
+                  color: #fff;
+                  font-size: 10px;
+                  font-weight: bold;
+                  width: 18px;
+                  height: 18px;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+                >{{ wishlist_count }}</span
+              >
+            </a>
+          </li>
+          <li style="position: relative">
+            <a href="{% url 'CartPageView' %}">
+              Cart
+              <i class="icon icon-shopping-cart" style="color: black"></i>
+              <span
+                id="cart-count-nav"
+                style="
+                  position: absolute;
+                  top: -5px;
+                  right: -8px;
+                  background: #ff4d4d;
+                  color: #fff;
+                  font-size: 10px;
+                  font-weight: bold;
+                  width: 18px;
+                  height: 18px;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+                >{{ cart_count }}</span
+              >
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    {%block content%} {%endblock content%}
+    <footer class="bg-gray-900 text-gray-300 mt-16">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- About -->
+          <div>
+            <h5 class="text-xl font-semibold text-white mb-4">Ultras</h5>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="{% url 'HomePageView' %}"
+                  class="hover:text-green-400 transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'ShopPageView' %}"
+                  class="hover:text-green-400 transition"
+                  >Shop</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'contactPageView' %}"
+                  class="hover:text-green-400 transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h5 class="text-xl font-semibold text-white mb-4">Contact Us</h5>
+            <p class="text-gray-400 mb-3">
+              Do you have any questions or suggestions?
+              <br />
+            </p>
+
+            <p class="text-gray-400">
+              Need help? Call us:
+              <br />
+              <span class="text-white font-semibold"> 09058285546 </span>
+            </p>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h5 class="text-xl font-semibold text-white mb-4">Follow Us</h5>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="bg-gray-800 p-3 rounded-full hover:bg-green-500 transition"
+              >
+                <i class="icon icon-facebook text-white"></i>
+              </a>
+
+              <a
+                href="#"
+                class="bg-gray-800 p-3 rounded-full hover:bg-green-500 transition"
+              >
+                <i class="icon icon-twitter text-white"></i>
+              </a>
+
+              <a
+                href="#"
+                class="bg-gray-800 p-3 rounded-full hover:bg-green-500 transition"
+              >
+                <i class="icon icon-youtube-play text-white"></i>
+              </a>
+
+              <a
+                href="#"
+                class="bg-gray-800 p-3 rounded-full hover:bg-green-500 transition"
+              >
+                <i class="icon icon-behance-square text-white"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div
+          class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-500"
+        >
+          © <span id="year"></span> Ultras. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <a
+      href="https://wa.me/2348071163391?text=Hello%2C%20I%20am%20interested%20in%20{{product.name}}%20priced%20at%20%E2%82%A6{{product.price}}.%20Is%20it%20available%3F"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <script defer>
+      window.DJANGO_URLS = {
+        addToCart: "{% url 'add_to_cart' %}",
+        updateCart: "{% url 'update_cart' %}",
+        removeCart: "{% url 'remove_from_cart' %}",
+        addToWishlist: "{% url 'add_to_wishlist' %}",
+        removeWishlist: "{% url 'remove_from_wishlist' %}",
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

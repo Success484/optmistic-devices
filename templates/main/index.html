@@ -1,0 +1,758 @@
+{%extends 'base.html'%} {% load static %} {%block content%}
+<section id="billboard" class="overflow-hidden">
+  <button class="button-prev">
+    <i class="icon icon-chevron-left"></i>
+  </button>
+  <button class="button-next">
+    <i class="icon icon-chevron-right"></i>
+  </button>
+  <div class="swiper main-swiper">
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide"
+        style="
+          background-image: url('{% static banner_image1 %}');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="banner-content" style="color: white;">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2 class="banner-title" style="color: white;">Phones & Accessories</h2>
+                <p>
+                  Discover top-quality smartphones, earphones, chargers, and more—all available 
+                  locally in Benin City. Get the gadgets you love at prices you will enjoy!
+                </p>
+                <div class="btn-wrap">
+                  <a
+                    href="{%url 'ShopPageView'%}"
+                    class="btn btn-medium d-flex align-items-center"
+                    tabindex="0"
+                    style="background: green;"
+
+                    >Shop it now <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="swiper-slide"
+        style="
+          background-image: url('{% static banner_image2 %}');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          object-fit: contain;
+        "
+      >
+        <div class="banner-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2 class="banner-title">Phones & Accessories</h2>
+                <p style="color: black;">
+                Explore the newest smartphones, earbuds, chargers, and more. 
+                Quality products at great prices, available right here in Benin City!
+                </p>
+                <div class="btn-wrap">
+                  <a
+                    href="{%url 'ShopPageView'%}"
+                    class="btn  btn-light-arrow btn-medium d-flex align-items-center"
+                    tabindex="0"
+                    style="background: green;"
+                    >Shop it now <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="marquee2-wrapper">
+  <marquee behavior="scroll" direction="right" class="marquee2-box">
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Itel-mobile-logo-vector.svg/1280px-Itel-mobile-logo-vector.svg.png" alt="BMW"
+        width="200" height="200">
+      <img src="https://www.shutterstock.com/image-vector/galati-romania-april-29-2023-600nw-2295394661.jpg"
+        alt="coca-cola" width="200" height="200">
+      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tecno-mobile-logo-icon.png"
+        alt="hyundai" width="200" height="200">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Samsung_old_logo_before_year_2015.svg/1280px-Samsung_old_logo_before_year_2015.svg.png" alt="BMW"
+        width="200" height="200">
+      <img src="https://smartlink.pk/wp-content/uploads/2021/12/infinix-logo2.png"
+        alt="coca-cola" width="200" height="200">
+      <img src="https://global.ariseplay.com/amg/www.thisdaylive.com/uploads/aac0a324-3881-4652-83c1-da7a9fe1ea38.jpg"
+        alt="hyundai" width="200" height="200">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Vivo_mobile_logo.png"
+        alt="hyundai" width="200" height="200">
+    </div>
+  </marquee>
+</div>
+
+<form method="GET" action="{% url 'ShopPageView' %}">
+  <div class="search-component">
+    <div class="input-box">
+      <i class="uil uil-search"></i>
+      <input type="text" name="q" placeholder="Search here..." />
+      <button type="submit" class="button">Search</button>
+    </div>
+  </div>
+</form>
+
+<section id="featured-products" style="margin-top: -100px;" class="product-store padding-large">
+  <div class="container">
+    <div
+      class="section-header d-flex flex-wrap align-items-center justify-content-between"
+    >
+      <h2 class="section-title">Featured Products</h2>
+      <div class="btn-wrap">
+        <a href="{% url 'ShopPageView'%}" class="d-flex align-items-center"
+          >View all products <i class="icon icon icon-arrow-io"></i
+        ></a>
+      </div>
+    </div>
+    <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="swiper product-multi-carousel" id="productCarousel">
+        <div class="swiper-wrapper">
+          {% for product in products %}
+          <div class="swiper-slide">
+            <div class="product-card bg-white border border-gray-300 rounded-lg p-2 text-center">
+              <a href="{% url 'detailPageView' product_id=product.id %}">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-responsive w-full rounded-md object-contain mb-2">
+                {% else %}
+                <img src="{% static 'images/default-product.jpg' %}" alt="{{ product.name }}" class="img-responsive w-full rounded-md object-contain mb-2">
+                {% endif %}
+              </a>
+              <h3 class="product-title text-sm font-semibold">{{ product.name }}</h3>
+              <span class="item-price text-primary font-bold">₦{{ product.price }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="latest-collection">
+  <div class="container">
+    <div class="product-collection row">
+      <div class="col-lg-7 col-md-12 left-content">
+        <div class="collection-item">
+          <div class="products-thumb">
+            <img
+              src="{% static 'images/collection-item1.jpg' %}"
+              alt="collection item"
+              class="large-image image-rounded"
+              style="border-radius: 10px;"
+            />
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+  <div class="categories">New Arrivals</div>
+  <h3 class="item-title">Latest Gadgets.</h3>
+  <p>
+    Discover the newest smartphones, accessories, and tech essentials. 
+    Quality products at great prices, available in-store and online.
+  </p>
+  <div class="btn-wrap">
+    <a href="{%url 'ShopPageView'%}" class="d-flex align-items-center" style="color: rgb(16, 163, 16);">
+      shop collection <i class="icon icon-arrow-io"></i>
+    </a>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-12 right-content flex-wrap">
+        <div class="collection-item top-item">
+          <div class="products-thumb">
+            <img
+              src="{% static 'images/collection-item2.jpg' %}"
+              alt="collection item"
+              class="small-image image-rounded"
+              style="object-fit: fill; border-radius: 8px;"
+            />
+          </div>
+          <div class="col-md-6 product-entry">
+            <div class="categories">Best Gadgets.</div>
+            <h3 class="item-title">Accessories.</h3>
+            <div class="btn-wrap">
+              <a href="{%url 'ShopPageView'%}" class="d-flex align-items-center" style="color: rgb(16, 163, 16);"
+                >shop collection <i class="icon icon-arrow-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="collection-item bottom-item">
+          <div class="products-thumb" style="height: 100%;">
+            <img
+              src="{% static 'images/collection-item3.jpg' %}"
+              alt="collection item"
+              class="small-image image-rounded"
+              style="object-fit: contain; border-radius: 10px;"
+            />
+          </div>
+          <div class="col-md-6 product-entry">
+            <!-- <div class="categories">Best Selling Product</div> -->
+            <h3 class="item-title">Best Selling Product</h3>
+            <div class="btn-wrap">
+              <a href="{%url 'ShopPageView'%}" class="d-flex align-items-center" style="color: rgb(16, 163, 16);"
+                >shop collection <i class="icon icon-arrow-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  id="selling-products"
+  class="product-store bg-light-grey padding-large"
+>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Best selling products</h2>
+    </div>
+    <ul class="tabs list-unstyled">
+      <li data-tab-target="#all" class="active tab">All</li>
+      <li data-tab-target="#phones" class="tab">Phones</li>
+      <li data-tab-target="#laptops" class="tab">Laptops</li>
+      <li data-tab-target="#accessories" class="tab">Accessories</li>
+    </ul>
+    <div class="tab-content">
+      <div id="all" data-tab-content class="active">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products1.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Wireless Earpod</a>
+              </h3>
+              <div class="item-price text-primary">₦8,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products2.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">White Earpod</a>
+              </h3>
+              <div class="item-price text-primary">₦5,500.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products3.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Power Bank 8000mh</a>
+              </h3>
+              <div class="item-price text-primary">$10,500.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products4.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Car Charger</a>
+              </h3>
+              <div class="item-price text-primary">₦45,500.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products5.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Iphone 15pro</a>
+              </h3>
+              <div class="item-price text-primary">₦850,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products6.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Tecno Spark 40</a>
+              </h3>
+              <div class="item-price text-primary">₦180,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products7.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Tecno pop 10</a>
+              </h3>
+              <div class="item-price text-primary">₦130,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products8.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Smart Watch</a>
+              </h3>
+              <div class="item-price text-primary">$20,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products13.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Samsung Galaxy S25</a>
+              </h3>
+              <div class="item-price text-primary">$350,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products14.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Smart Watch</a>
+              </h3>
+              <div class="item-price text-primary">₦65,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products15.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Power Bank 25000mh</a>
+              </h3>
+              <div class="item-price text-primary">₦25,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products16.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Power Bank 50,000mh</a>
+              </h3>
+              <div class="item-price text-primary">₦45,000.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="phones" data-tab-content>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products13.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Samsung Galaxy S25</a>
+              </h3>
+              <div class="item-price text-primary">₦328,000</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products14.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Smart Watch</a>
+              </h3>
+              <div class="item-price text-primary">₦65,000</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products15.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Power Bank 20000mh</a>
+              </h3>
+              <div class="item-price text-primary">₦19,000</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products16.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Power Bank 50000mh</a>
+              </h3>
+              <div class="item-price text-primary">₦45,000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="laptops" data-tab-content>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products3.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Power Bank 15000mh</a>
+              </h3>
+              <div class="item-price text-primary">₦18,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products8.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Smart Watch</a>
+              </h3>
+              <div class="item-price text-primary">₦30,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products5.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Iphone 15pro</a>
+              </h3>
+              <div class="item-price text-primary">₦920,000.00</div>
+            </div>
+          </div>
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products7.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Tecno pop 10</a>
+              </h3>
+              <div class="item-price text-primary">₦120,000.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="accessories" data-tab-content>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products19.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Wireless Headset</a>
+              </h3>
+              <div class="item-price text-primary">₦12,500.00</div>
+            </div>
+            </div>
+            <div class="product-item bg-white border border-gray-300 rounded-lg p-2">
+            <div class="image-holder">
+              <img
+                src="{% static 'images/selling-products20.jpg' %}"
+                alt="Books"
+                class="product-image w-full rounded-md object-contain"
+              />
+            </div>
+            
+            <div class="product-detail">
+              <h3 class="product-title">
+                <a href="single-product.html">Smart Watch</a>
+              </h3>
+              <div class="item-price text-primary">₦50,000.00</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flash-sales" class="product-store py-10">
+  <div class="container mx-auto px-4">
+    <div class="section-header mb-6">
+      <h2 class="text-2xl font-semibold">Flash Sales</h2>
+    </div>
+
+    <div class="swiper product-swiper flash-sales overflow-hidden">
+      <div class="swiper-wrapper">
+        {% for product in products %}
+        <div class="swiper-slide">
+          <div class="product-item bg-white border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+            <div class="relative w-full">
+              <img
+                src="{{ product.image.url|default:'{% static \'images/default-product.jpg\' %}' }}"
+                alt="{{ product.name }}"
+                class="product-image w-full rounded-md object-contain"
+              />
+              {% if product.discount %}
+              <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                {{ product.discount }} Off
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="product-detail mt-3 text-center">
+              <h3 class="product-title text-sm font-semibold">
+                <a href="{% url 'detailPageView' product_id=product.id %}">{{ product.name }}</a>
+              </h3>
+              <div class="item-price text-primary font-bold mt-1">
+                {% if product.prev_price %}
+                  <del class="text-gray-400 mr-1">₦{{ product.prev_price }}</del>
+                {% endif %}
+                ₦{{ product.price }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Add pagination if needed -->
+      <div class="swiper-pagination mt-4"></div>
+    </div>
+  </div>
+</section>
+
+<section class="shoppify-section-banner">
+  <div class="container">
+    <div class="product-collection">
+      <div class="left-content collection-item">
+        <div class="products-thumb">
+          <img
+            src="{% static 'images/model.jpg' %}"
+            alt="collection item"
+            class="large-image image-rounded"
+            style="object-fit: cover;"
+          />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+  <div class="categories" style="color: white;">Mobile Accessories</div>
+  <h3 class="item-title">Upgrade Your Gadgets.</h3>
+  <p style="color: white;">
+    Find quality chargers, earphones, power banks, and more. 
+    Everything you need to keep your devices powered and connected.
+  </p>
+  <div class="btn-wrap">
+    <a href="{%url 'ShopPageView'%}" class="d-flex align-items-center" style="color: rgb(14, 251, 14);">
+      shop collection <i class="icon icon-arrow-io"></i>
+    </a>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram" class="padding-large">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Follow our instagram</h2>
+    </div>
+    <p>
+      Our official Instagram account <a href="#">@optmistic</a> or
+      <a href="#">#optmistic_devices</a>
+    </p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+  <figure class="zoom-effect">
+    <img
+      src="{% static 'images/selling-products1.jpg' %}"
+      alt="instagram"
+      class="insta-image w-full object-cover rounded"
+    />
+    <i class="icon icon-instagram absolute top-2 right-2 text-white"></i>
+  </figure>
+
+  <figure class="zoom-effect">
+    <img
+      src="{% static 'images/selling-products2.jpg' %}"
+      alt="instagram"
+      class="insta-image w-full object-cover rounded"
+    />
+    <i class="icon icon-instagram absolute top-2 right-2 text-white"></i>
+  </figure>
+
+  <figure class="zoom-effect">
+    <img
+      src="{% static 'images/selling-products3.jpg' %}"
+      alt="instagram"
+      class="insta-image w-full object-cover rounded"
+    />
+    <i class="icon icon-instagram absolute top-2 right-2 text-white"></i>
+  </figure>
+
+  <figure class="zoom-effect">
+    <img
+      src="{% static 'images/selling-products4.jpg' %}"
+      alt="instagram"
+      class="insta-image w-full object-cover rounded"
+    />
+    <i class="icon icon-instagram absolute top-2 right-2 text-white"></i>
+  </figure>
+
+  <figure class="zoom-effect">
+    <img
+      src="{% static 'images/selling-products5.jpg' %}"
+      alt="instagram"
+      class="insta-image w-full object-cover rounded"
+    />
+    <i class="icon icon-instagram absolute top-2 right-2 text-white"></i>
+  </figure>
+
+  <figure class="zoom-effect">
+    <img
+      src="{% static 'images/selling-products6.jpg' %}"
+      alt="instagram"
+      class="insta-image w-full object-cover rounded"
+    />
+    <i class="icon icon-instagram absolute top-2 right-2 text-white"></i>
+  </figure>
+</div>
+    </div>
+  </div>
+</section>
+{%endblock content%}
+
+
+
