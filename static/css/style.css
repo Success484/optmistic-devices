@@ -2260,9 +2260,7 @@ i.icon.icon-arrow-io {
     font-size: 1.4em;
     margin: 0;
 }
-.product-item .item-price {
-    font-size: 1em;
-}
+
 .swiper.product-swiper {
     position: relative;
     margin-bottom: 30px;
@@ -2499,7 +2497,7 @@ i.icon.icon-arrow-io {
 --------------------------------------------------------------*/
 .product-item .item-price del {
     color: var(--grey-color);
-    font-size: 0.6em;
+    font-size: 15px;
     padding-right: 10px;
 }
 #flash-sales {

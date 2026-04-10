@@ -44,7 +44,7 @@
               <h3 class="product-title">
                 <a href="{% url 'detailPageView' product_id=product.id %}">{{ product.name }}</a>
               </h3>
-              <div class="item-price text-primary">₦{{ product.price|floatformat:2 }}</div>
+              <div class="item-price text-primary" style="font-size: 19px;">₦{{ product.price|floatformat:2 }}</div>
             </div>
           </div>
           {% endif %}
