@@ -127,10 +127,10 @@
         <div class="swiper-wrapper">
           {% for product in products %}
           <div class="swiper-slide">
-            <div class="product-card bg-white border border-gray-300 rounded-lg p-2 text-center flex flex-col items-center">
+            <div class="bg-white border border-gray-300 rounded-lg p-2 text-center flex flex-col items-center">
               <a href="{% url 'detailPageView' product_id=product.id %}">
                 {% if product.image_url %}
-                <img src="{{ product.image_url }}" alt="{{ product.name }}" style="height: 300px; width: 300px;" class="swiper-img rounded-md mb-2">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" style="height: 300px;" class="swiper-img rounded-md mb-2">
                 {% else %}
                 <img src="{% static 'images/default-product.jpg' %}" alt="{{ product.name }}" class="img-responsive w-full rounded-md object-contain mb-2">
                 {% endif %}
